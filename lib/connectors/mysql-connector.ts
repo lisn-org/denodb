@@ -13,6 +13,10 @@ export interface MySQLOptions extends ConnectorOptions {
   port?: number;
   charset?: string;
   logger?: LoggerConfig;
+  poolSize?: number;
+  socketPath?: string;
+  timeout?: number;
+  idleTimeout?: number;
 }
 
 export class MySQLConnector implements Connector {
@@ -46,6 +50,10 @@ export class MySQLConnector implements Connector {
       password: this._options.password,
       port: this._options.port ?? 3306,
       charset: this._options.charset ?? "utf8",
+      poolSize: this._options.poolSize,
+      socketPath: this._options.socketPath,
+      timeout: this._options.timeout,
+      idleTimeout: this._options.idleTimeout,
     });
 
     this._connected = true;
